@@ -6,21 +6,21 @@ using UnityEngine.AI;
 public class MoveEnemy : MonoBehaviour
 {
     [SerializeField] private Transform player;
+
     private NavMeshAgent agent;
-    private Vector3 randomDirection;
-    private float changeDirectionTimer;
-    private float minChange = 3f;
-    private float maxChange = 8f;
     private bool playerWasSeen;
-    // Start is called before the first frame update
+
+    private Transform waypoint;
+    [SerializeField] private GameObject[] waypoints;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         playerWasSeen = false;
-        ChangeDirection();
+        FindWaypoints();
+        MakeFirtstWaypoint();
     }
 
-    // Update is called once per frame
     private void Update()
     {
         CheckDistanceToPlayer();
@@ -31,20 +31,11 @@ public class MoveEnemy : MonoBehaviour
         }
         else
         {
-            changeDirectionTimer -= Time.deltaTime;
-            if(changeDirectionTimer <= 0)
+            if (transform.position.x == waypoint.position.x && transform.position.z == waypoint.position.z)
             {
-                ChangeDirection();
+                GetWaypoint();
             }
-            agent.SetDestination(transform.position + randomDirection);
-        }
-    }
-    private void ChangeDirection()
-    {
-        if (!playerWasSeen)
-        {
-            randomDirection = Random.insideUnitSphere * 5f;
-            changeDirectionTimer = Random.Range(minChange, maxChange);
+            agent.SetDestination(waypoint.position);
         }
     }
     private void CheckDistanceToPlayer()
@@ -53,5 +44,18 @@ public class MoveEnemy : MonoBehaviour
         {
             playerWasSeen = true;
         }
+    }
+    private void GetWaypoint()
+    {
+        int index = Random.Range(0, waypoints.Length);
+        waypoint = waypoints[index].transform;
+    }
+    private void FindWaypoints()
+    {
+        waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
+    }
+    private void MakeFirtstWaypoint()
+    {
+        waypoint = GameObject.Find("ExitFromBase").transform;
     }
 }
