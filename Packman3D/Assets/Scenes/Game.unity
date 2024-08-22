@@ -6248,6 +6248,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7148c8f5859bccd4aac5a02dd2a471ed,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5021228346462164004, guid: 7148c8f5859bccd4aac5a02dd2a471ed,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17788,6 +17793,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7148c8f5859bccd4aac5a02dd2a471ed,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5021228346462164004, guid: 7148c8f5859bccd4aac5a02dd2a471ed,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24515,6 +24525,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7148c8f5859bccd4aac5a02dd2a471ed,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5021228346462164004, guid: 7148c8f5859bccd4aac5a02dd2a471ed,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -29263,6 +29278,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost
       objectReference: {fileID: 0}
+    - target: {fileID: 9186841588118104407, guid: b583a4b315ad0674aae9deaee7112a97,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29372,7 +29392,9 @@ PrefabInstance:
       value: 116
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 925932826394756728, guid: 284d8e3642fda8e4cbfcd7347491a484, type: 3}
+    - {fileID: 7611683784044551814, guid: 284d8e3642fda8e4cbfcd7347491a484, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1065190677069980950, guid: 284d8e3642fda8e4cbfcd7347491a484,

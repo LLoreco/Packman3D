@@ -2,6 +2,7 @@ public class StringData
 {
     private string verticalInput = "Vertical";
     private string horizotalInput = "Horizontal";
+    private string remapFloat = "_RemapFloat";
 
     public string VerticalInput
     {
@@ -23,6 +24,13 @@ public class StringData
         set
         {
             horizotalInput = value;
+        }
+    }
+    public string RemapFloat
+    {
+        get
+        {
+            return remapFloat;
         }
     }
 }
