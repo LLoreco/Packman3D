@@ -12,6 +12,13 @@ public class MoveEnemy : MonoBehaviour
 
     private Transform waypoint;
     [SerializeField] private GameObject[] waypoints;
+    [SerializeField] private GameObject enemyBase;
+
+    private Material defaultmaterial;
+    [SerializeField] private Material hologramMaterial;
+    [SerializeField] private GameObject body;
+
+    private bool hasEaten;
 
     private void Start()
     {
@@ -19,6 +26,7 @@ public class MoveEnemy : MonoBehaviour
         playerWasSeen = false;
         FindWaypoints();
         MakeFirtstWaypoint();
+        defaultmaterial = body.GetComponent<MeshRenderer>().material;
     }
 
     private void Update()
@@ -33,14 +41,21 @@ public class MoveEnemy : MonoBehaviour
         {
             if (transform.position.x == waypoint.position.x && transform.position.z == waypoint.position.z)
             {
-                GetWaypoint();
+                if (hasEaten)
+                {
+                    OnBase();
+                }
+                else
+                {
+                    GetWaypoint();
+                }
             }
             agent.SetDestination(waypoint.position);
         }
     }
     private void CheckDistanceToPlayer()
     {
-        if (Vector3.Distance(transform.position, player.position) <= 50f)
+        if (Vector3.Distance(transform.position, player.position) <= 50f && hasEaten == false)
         {
             playerWasSeen = true;
         }
@@ -57,5 +72,20 @@ public class MoveEnemy : MonoBehaviour
     private void MakeFirtstWaypoint()
     {
         waypoint = GameObject.Find("ExitFromBase").transform;
+    }
+    public void HasEaten()
+    {
+        hasEaten = true;
+        playerWasSeen = false;
+        body.GetComponent<MeshRenderer>().material = hologramMaterial;
+        agent.SetDestination(enemyBase.transform.position);
+    }
+    private void OnBase()
+    {
+        hasEaten = false;
+        body.GetComponent<MeshRenderer>().material = defaultmaterial;
+        GetWaypoint();
+        BoxCollider collider = gameObject.GetComponent<BoxCollider>();
+        collider.enabled = true;
     }
 }

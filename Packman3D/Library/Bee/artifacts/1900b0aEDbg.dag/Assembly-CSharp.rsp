@@ -379,7 +379,11 @@
 "Assets/Scripts/Enemy/MoveEnemy.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/Player/CollectCoin.cs"
+"Assets/Scripts/Player/CollectPowerUp.cs"
 "Assets/Scripts/Player/PlayerController.cs"
+"Assets/Scripts/Teleport/Teleporter.cs"
+"Assets/Scripts/Teleport/TeleportManager.cs"
+"Assets/Scripts/Teleport/TeleportPoint.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
 

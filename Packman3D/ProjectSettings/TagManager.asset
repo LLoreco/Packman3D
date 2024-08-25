@@ -7,6 +7,9 @@ TagManager:
   - Waypoint
   - Coin
   - Enemy
+  - Camera
+  - PowerUp
+  - Teleporter
   layers:
   - Default
   - TransparentFX

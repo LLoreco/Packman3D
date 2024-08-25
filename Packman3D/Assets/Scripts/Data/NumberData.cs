@@ -1,6 +1,6 @@
 public class NumberData
 {
-    private float movementSpeed = 50f;
+    private float movementSpeed = 25f;
     private float rotationSpeed = 150f;
     public float Speed
     {

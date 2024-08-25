@@ -2,19 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectCoin : MonoBehaviour
+public class CollectCoin : PlayerController
 {
-    [SerializeField] private GameObject gameManager;
-    private GameManager gm;
-    private void Start()
-    {
-        gm = gameManager.GetComponent<GameManager>();
-    }
+    [SerializeField] private AudioSource playerAudio;
+    [SerializeField] private AudioClip pickUpCLip;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Coin"))
         {
             gm.EatCoins();
+            playerAudio.PlayOneShot(pickUpCLip);
             Destroy(other.gameObject);
         }
     }

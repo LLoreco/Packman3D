@@ -13,6 +13,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI coinsTMP;
     private int coins;
 
+    private bool isGameOver;
+    public bool IsGameOver
+    {
+        get
+        {
+            return isGameOver;
+        }
+    }
+
     private ScoreData scoreData = new ScoreData();
     private void Awake()
     {
@@ -22,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         scoreTMP.text = "Score: " + score.ToString();
         coinsTMP.text = "Coins: " + coins.ToString();
+        isGameOver = false;
     }
     private void Update()
     {
@@ -32,5 +42,17 @@ public class GameManager : MonoBehaviour
     {
         coins--;
         score += scoreData.StandartCoin;
+    }
+    public void EatBigCoin()
+    {
+        score += scoreData.BigCoin;
+    }
+    public void KillGhost()
+    {
+        score += scoreData.EatGhost;
+    }
+    public void GameOver()
+    {
+        isGameOver = true;
     }
 }
