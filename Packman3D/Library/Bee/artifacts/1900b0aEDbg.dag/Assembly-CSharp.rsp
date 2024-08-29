@@ -378,12 +378,16 @@
 "Assets/Scripts/Data/WaypointsData.cs"
 "Assets/Scripts/Enemy/MoveEnemy.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/MainMenu/Buttons.cs"
+"Assets/Scripts/MainMenu/MoveForward.cs"
+"Assets/Scripts/MainMenu/RotateObject.cs"
 "Assets/Scripts/Player/CollectCoin.cs"
 "Assets/Scripts/Player/CollectPowerUp.cs"
 "Assets/Scripts/Player/PlayerController.cs"
 "Assets/Scripts/Teleport/Teleporter.cs"
 "Assets/Scripts/Teleport/TeleportManager.cs"
 "Assets/Scripts/Teleport/TeleportPoint.cs"
+"Assets/Scripts/UI/PauseMenuButtons.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
 

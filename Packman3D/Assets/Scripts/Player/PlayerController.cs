@@ -14,7 +14,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private TeleportManager teleportManager;
 
-    private GameObject[] childObjects;
+    [SerializeField] private GameObject body;
+
+    [SerializeField] private Material powerUpMaterial;
+    private Material defaultMaterial;
 
     [SerializeField] private GameObject gameManager;
     protected GameManager gm;
@@ -37,6 +40,7 @@ public class PlayerController : MonoBehaviour
         movementSpeed = numberData.Speed;
         rotationSpeed = numberData.RotationSpeed;
         gm = gameManager.GetComponent<GameManager>();
+        defaultMaterial = body.GetComponent<MeshRenderer>().material;
         havePowerUp = false;
     }
     private void Update()
@@ -90,17 +94,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            childObjects = new GameObject[gameObject.transform.childCount];
-            for (int i = 0; i < childObjects.Length; i++)
-            {
-                childObjects[i] = gameObject.transform.GetChild(i).gameObject;
-                if (childObjects[i].CompareTag("Camera"))
-                {
-                    break;
-                }
-                Material material = childObjects[i].GetComponent<MeshRenderer>().material;
-                StartCoroutine(AnimateMaterial(material, stringData.RemapFloat, -1f, 1f, 1f));
-            }
+            Material material = body.GetComponent<MeshRenderer>().material;
+            StartCoroutine(AnimateMaterial(material, stringData.RemapFloat, -1f, 1f, 1f));
             gm.GameOver();
         }
     }
@@ -127,11 +122,13 @@ public class PlayerController : MonoBehaviour
     {
         float duration = 20f;
         havePowerUp = true;
+        body.GetComponent<MeshRenderer>().material = powerUpMaterial;
         while (duration > 0)
         {
             duration -= Time.deltaTime;
             yield return null;
         }
+        body.GetComponent<MeshRenderer>().material = defaultMaterial;
         havePowerUp = false;
     }
     private void OnTriggerEnter(Collider other)
